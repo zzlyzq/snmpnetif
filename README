@@ -1,0 +1,41 @@
+snmpnetif.py
+    Author      
+        rob0r - github.com/rob0r
+        
+    About       
+        Tool to probe network devices for interface statistics via SNMP
+
+Requirements
+    Python      - http://www.python.org/
+    net-snmp    - http://www.net-snmp.org/
+
+General Usage
+    ./snmpnetif.py --target 192.168.0.254
+    --help for other options
+    
+Notes
+    Tested with:
+        Ubuntu 10.10_64 using Python 2.6.6
+        libsnmp-python 5.4.3~dfsg-1ubuntu3
+
+Changes:
+    26042011:
+        cleaned formatting
+        first commit to github
+    25042011:
+        added adslsync()
+        added adslsnr()
+        added adslattn()
+        updated probe()
+    24042011:
+        added devname()
+        added devuptime()
+        added ifactive()
+        added ifnames()
+        added ifoctets()
+        updated probe()
+    20042011:
+        added main()
+        added __init__() - handle cli args
+        added printargs() - debug cli args
+        added probe() - basic testing of libsnmp methods
