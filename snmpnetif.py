@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-__ver__ = "26042011"
+__ver__ = "27042011"
 __doc__ = """
 snmpnetif.py
     Author      - rob0r - github.com/rob0r
@@ -194,11 +194,11 @@ class main():
     def adslsnr(self, updown):
         """
         this method returns the transmission SNR
-        found at transmission.94.1.1.3.1.5 (down)
-        and transmission.94.1.1.3.1.3 (up). updown should be
+        found at transmission.94.1.1.2.1.4.3 (down)
+        and transmission.94.1.1.3.1.4.3 (up). updown should be
         0 for downstream, 1 for upstream
         """
-        if updown == 0: oidtree = 'iso.3.6.1.2.1.10.94.1.1.3.1.5'
+        if updown == 0: oidtree = 'iso.3.6.1.2.1.10.94.1.1.2.1.4'
         if updown == 1: oidtree = 'iso.3.6.1.2.1.10.94.1.1.3.1.4'
         oid = self.netsnmp.VarList(oidtree)
         snr = self.session.walk(oid)
@@ -211,11 +211,11 @@ class main():
         """
         this method returns the transmission Attenuation
         found at transmission.94.1.1.2.1.5.3 (down)
-        and transmission.94.1.1.2.1.4' (up). updown should be
+        and transmission.94.1.1.3.1.5.3 (up). updown should be
         0 for downstream, 1 for upstream
         """
         if updown == 0: oidtree = 'iso.3.6.1.2.1.10.94.1.1.2.1.5'
-        if updown == 1: oidtree = 'iso.3.6.1.2.1.10.94.1.1.2.1.4'
+        if updown == 1: oidtree = 'iso.3.6.1.2.1.10.94.1.1.3.1.5'
         oid = self.netsnmp.VarList(oidtree)
         attn = self.session.walk(oid)
         if attn != None:
