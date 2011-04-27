@@ -9,6 +9,11 @@ Requirements
     Python      - http://www.python.org/
     net-snmp    - http://www.net-snmp.org/
 
+Install
+    git clone git://github.com/rob0r/snmpnetif.git
+    cd snmpnetif
+    chmod +x snmpnetif.py
+    
 General Usage
     ./snmpnetif.py --target 192.168.0.254
     --help for other options
