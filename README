@@ -19,6 +19,9 @@ Notes
         libsnmp-python 5.4.3~dfsg-1ubuntu3
 
 Changes:
+    27042011:
+        fixed bug in adslsnr() / wrong oid tree
+        fixed bug in adslattn() / wrong oid tree
     26042011:
         cleaned formatting
         first commit to github
