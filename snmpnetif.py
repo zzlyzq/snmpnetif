@@ -123,7 +123,7 @@ class main():
         """
         oid = self.netsnmp.VarList('iso.3.6.1.2.1.1.3.0')
         uptimeticksraw = self.session.get(oid)
-        if uptimeticksraw == None:
+        if uptimeticksraw[0] == None:
             print('Failed to get device uptime, Aborting'); quit()
         uptimeticks = int(uptimeticksraw[0])
         uptime = self.datetime.timedelta(seconds = (uptimeticks / 100))
@@ -137,7 +137,7 @@ class main():
         """
         oid = self.netsnmp.VarList('iso.3.6.1.2.1.2.2.1.10')
         ifaces = self.session.walk(oid)
-        if ifaces == None:
+        if ifaces == ():
             print('Failed to get device interfaces, Aborting'); quit()
         idx = 1
         ifaceidx = []
@@ -156,7 +156,7 @@ class main():
         ifoids = [(oidbase + str(idx)) for idx in ifidx]
         oids = self.netsnmp.VarList(*ifoids)
         ifnames = self.session.get(oids)
-        if ifnames == None:
+        if ifnames[0] == None:
             print('Failed to get interface names, Aborting'); quit()
         return ifnames
         
@@ -171,7 +171,7 @@ class main():
         ifoids = [(oidbase + str(idx)) for idx in ifidx]
         oids = self.netsnmp.VarList(*ifoids)
         ifoctets = self.session.get(oids)
-        if ifoctets == None:
+        if ifoctets[0] == None:
             print('Failed to get interface octets, Aborting'); quit()
         return ifoctets
 
@@ -186,7 +186,7 @@ class main():
         if updown == 1: oidtree = 'iso.3.6.1.2.1.10.94.1.1.5.1.2'
         oid = self.netsnmp.VarList(oidtree)
         syncspeed = self.session.walk(oid)
-        if syncspeed != None:
+        if syncspeed != ():
             return syncspeed
         else:
             return None
@@ -202,7 +202,7 @@ class main():
         if updown == 1: oidtree = 'iso.3.6.1.2.1.10.94.1.1.3.1.4'
         oid = self.netsnmp.VarList(oidtree)
         snr = self.session.walk(oid)
-        if snr != None:
+        if snr != ():
             return snr
         else:
             return None
@@ -218,7 +218,7 @@ class main():
         if updown == 1: oidtree = 'iso.3.6.1.2.1.10.94.1.1.3.1.5'
         oid = self.netsnmp.VarList(oidtree)
         attn = self.session.walk(oid)
-        if attn != None:
+        if attn != ():
             return attn
         else:
             return None
@@ -271,7 +271,7 @@ class main():
                             str(interface).ljust(60), str(inspeed_avg[index]).rjust(7),
                             str(outspeed_avg[index]).rjust(10)
                             )
-                        index = index + 1
+                        index += 1
                     # if a DSL probe doesn't throw an exception
                     # DSL stats get displayed
                     if displaydslstats == True:
