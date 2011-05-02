@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-__ver__ = "27042011"
+__ver__ = "02052011"
 __doc__ = """
 snmpnetif.py
     Author      - rob0r - github.com/rob0r
@@ -15,7 +15,7 @@ class main():
             self.netsnmp = netsnmp
         except:
             print('Failed to load netsnmp module, Is it installed?\n')
-            print('Ubuntu users : sudo aptitude install libsnmp-python')
+            print('Ubuntu users : sudo apt-get install libsnmp-python')
             exit()
         # import the timedate module, used in the devuptime() method
         import datetime
@@ -28,7 +28,7 @@ class main():
                 import argparse
             except:
                 print('Failed to load Python - Argparse module, Is it installed?\n')
-                print('Ubuntu users : aptitude install pyathon-argparse')
+                print('Ubuntu users : sudo apt-get install python-argparse')
                 exit()
             # the argparse module creates the --help, -h option by default
             cliopts = argparse.ArgumentParser(
@@ -189,7 +189,7 @@ class main():
         if syncspeed != ():
             return syncspeed
         else:
-            return None
+            raise Exception
         
     def adslsnr(self, updown):
         """
@@ -205,7 +205,7 @@ class main():
         if snr != ():
             return snr
         else:
-            return None
+            raise Exception
     
     def adslattn(self, updown):
         """
@@ -221,7 +221,7 @@ class main():
         if attn != ():
             return attn
         else:
-            return None
+            raise Exception
 
     def probe(self, poll):
         """
