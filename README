@@ -27,6 +27,7 @@ Changes:
     02052011:
         fixed up msgs for Ubuntu users
         fixed bug when no DSL lines were found
+        updated probe()
     27042011:
         fixed bug in adslsnr() / wrong oid tree
         fixed bug in adslattn() / wrong oid tree
