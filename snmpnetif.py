@@ -258,6 +258,7 @@ class main():
                 # print stats if the first loop has run
                 if firstrun == True:
                     firstrun = False
+                    donttrydsl = False
                     print('Collecting Data')
                     print('\nPlease wait {0} secconds').format(poll)
                 else:
@@ -327,16 +328,19 @@ class main():
                 outspeed_avg = [((int(outoctets_end[x]) - int(outoctets_start[x])) / ttime / 1024) for x in xrange(0, len(ifidx))]
                 
                 # try probe for DSL stats and set the display flag
-                try:
-                    dslsyncdown = self.adslsync(0)
-                    dslsyncup = self.adslsync(1)
-                    dslsnrdown = self.adslsnr(0)
-                    dslsnrup = self.adslsnr(1)
-                    dslattndown = self.adslattn(0)
-                    dslattnup = self.adslattn(1)
-                    displaydslstats = True
-                except:
-                    displaydslstats = False
+                # if first attempt fails, dont keep trying
+                if donttrydsl == False:
+                    try:
+                        dslsyncdown = self.adslsync(0)
+                        dslsyncup = self.adslsync(1)
+                        dslsnrdown = self.adslsnr(0)
+                        dslsnrup = self.adslsnr(1)
+                        dslattndown = self.adslattn(0)
+                        dslattnup = self.adslattn(1)
+                        displaydslstats = True
+                    except:
+                        displaydslstats = False
+                        donttrydsl = True
                 
             except KeyboardInterrupt:
                 print('\nTerminated'); quit()
