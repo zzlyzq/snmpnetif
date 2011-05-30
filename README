@@ -24,6 +24,8 @@ Notes
         libsnmp-python 5.4.3~dfsg-2ubuntu1
 
 Changes:
+	30052011:
+		added warning message for fedora users
     02052011:
         fixed up msgs for Ubuntu users
         fixed bug when no DSL lines were found

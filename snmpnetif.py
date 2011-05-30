@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-__ver__ = "02052011"
+__ver__ = "30052011"
 __doc__ = """
 snmpnetif.py
     Author      - rob0r - github.com/rob0r
@@ -16,6 +16,7 @@ class main():
         except:
             print('Failed to load netsnmp module, Is it installed?\n')
             print('Ubuntu users : sudo apt-get install libsnmp-python')
+            print('Fedora users : yum install net-snmp-python')
             exit()
         # import the timedate module, used in the devuptime() method
         import datetime
