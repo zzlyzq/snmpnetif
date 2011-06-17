@@ -4,6 +4,7 @@ snmpnetif.py
         
     About       
         Tool to probe network devices for interface statistics via SNMP
+		ADSL line statistics will also get displayed if available
 
 Requirements
     Python      - http://www.python.org/
